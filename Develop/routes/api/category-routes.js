@@ -9,14 +9,21 @@ router.get('/', async (req, res) => {
     const categories = await Category.findAll({
       attributes: {
         // exclude the created and updated timestamps
-        exclude: ['createdAt', 'updatedAt']
+        exclude: [
+          'createdAt',
+         'updatedAt'
+        ]
       },
       include: {
         // included associated Product module
         model: Product,
         attributes: {
           // exclude the created, updated, and categoryId timestamps
-          exclude: ['createdAt', 'updatedAt', 'categoryId']
+          exclude: [
+            'createdAt',
+            'updatedAt',
+            'categoryId'
+          ]
         }
       }
     });
@@ -32,7 +39,11 @@ router.get('/:id', async (req, res) => {
       include: {
         model: Product,
         attributes: {
-          exclude: ['createdAt', 'updatedAt', 'categoryId']
+          exclude: [
+            'createdAt',
+            'updatedAt',
+            'categoryId'
+          ]
         }
       }
     });
@@ -61,9 +72,12 @@ router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   try {
     const categoryId = req.params.id;
-    const [rowsAffected, updatedCategories] = await Category.update(req.body,
-      { where: { id: categoryId}, returning: true }
-      );
+    const [rowsAffected, updatedCategories] = await Category.update(req.body,{ 
+      where: {
+         id: categoryId
+        }, 
+        returning: true 
+      });
       if (rowsAffected === 0) {
         return res.status(404).json({ message: `Category with ID ${categoryId} not found` });
       }
@@ -79,7 +93,10 @@ router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     const categoryId = req.params.id;
-    const deletedCategory = await Category.destroy({ where: { id: categoryId }
+    const deletedCategory = await Category.destroy({ 
+      where: { 
+        id: categoryId
+      }
     });
     if (!deletedCategory) {
       return res.status(404).json({ message: `Category with ID ${categoryId} not found`});
