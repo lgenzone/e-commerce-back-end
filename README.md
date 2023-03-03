@@ -21,7 +21,9 @@
 
   ## Usage 
   * In .env file, include MySQL credentials
-  * Start MySQL and source database using the following command: db/schema.sql
+  * Start MySQL using the following command: mysql -uroot -p
+  * Source database using the following command: db/schema.sql
+  * Select database: use ecommerce_db;
   * Seed the database using the following command: node seeds/index.js
   * Launch the application by using the following command: node server.js
   * View routes by using [Insomnia](https://docs.insomnia.rest/) 
