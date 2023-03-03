@@ -29,6 +29,7 @@ router.get('/', async (req, res) => {
   }
 });
 
+// find one category by ID
 router.get('/:id', async (req, res) => {
   try {
     const category = await Category.findByPk(req.params.id, {
@@ -54,15 +55,19 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', async (req, res) => {
   // create a new category
-  try {
-    const category = await Category.create(req.body);
-    res.status(200).json(category);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
+  router.post('/', async (req, res) => {
+    try {
+      const category = await Category.create({
+        category_name: req.body.category_name
+      });
+  
+      res.status(200).json(category);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  });
+  
 
 router.put('/:id', async (req, res) => {
   // update a category by its `id` value
