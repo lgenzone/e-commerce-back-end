@@ -8,11 +8,7 @@ router.get('/', async (req, res) => {
   try {
     const categories = await Category.findAll({
       attributes: {
-        // exclude the created and updated timestamps
-        exclude: [
-          'createdAt',
-         'updatedAt'
-        ]
+      
       },
       include: {
         // included associated Product module

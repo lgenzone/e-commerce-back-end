@@ -9,13 +9,9 @@ router.get('/', async (req, res) => {
   try {
     const products = await Product.findAll({
       include: [
-        { model: Category, attributes: ['id', 'name'] },
-        { model: Tag, attributes: ['id', 'name'], through: { atributes: [] } }
+        Category,
+        { model: Tag, through: ProductTag }
       ],
-      attributes: {
-        // exclude categoryId, created, and updated
-        exclude: ['categoryId', 'createdAt', 'updatedAt']
-      }
     });
     res.json(products);
   } catch (err) {
