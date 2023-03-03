@@ -25,7 +25,8 @@
   * Seed the database using the following command: node seeds/index.js
   * Launch the application by using the following command: node server.js
   * View routes by using [Insomnia](https://docs.insomnia.rest/) 
-  * Link to walkthrough video []()
+  *[Walkthrough Video](https://drive.google.com/file/d/1m4nGAOMpwwnarC2Gweue2Cwm033BCCql/view)
+
   ## Testing 
   N/A
 
